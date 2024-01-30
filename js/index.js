@@ -49,24 +49,24 @@ function makeRainbow() {
         for(var j=low; j <= high; j+=1) {
             for(var x=0; x < weight; x+=1) {
             var pixel = image.getPixel(x,j);
-            if (i == 0) {
+            if (i === 0) {
                 pixel.setRed(255);
             }
-            else if (i == 1) {
+            else if (i === 1) {
                 pixel.setRed(255);
                 pixel.setGreen(165);
             }
-            else if (i == 2) {
+            else if (i === 2) {
                 pixel.setRed(255);
                 pixel.setGreen(255);
             }
-            else if (i == 3) {
+            else if (i === 3) {
                 pixel.setGreen(255);
             }
-            else if (i == 4) {
+            else if (i === 4) {
                 pixel.setBlue(255);
             }
-            else if (i == 5) {
+            else if (i === 5) {
                 pixel.setRed(75);
                 pixel.setBlue(130);
             }
@@ -76,7 +76,6 @@ function makeRainbow() {
             }
           }
         }
-        console.log(i+": "+low +" - "+high);
         low = high + 1;
         high = low + line;
         if (high >= height) {
@@ -87,12 +86,76 @@ function makeRainbow() {
     image.drawTo(imgCanvas);
 }
 
-function reset() {
-    var greyImage;
-    var redImage;
-    var rainbowImage;
+// function reset(){
+//     if (!image) {
+//       console.log("image reset");
+//       image.drawTo(imgCanvas);
+//     }
+//   }
+
+
+
+// function doblur() {
+
+//     console.log("blurring");
+//     blImage = copyImage(image);
+//     console.log("made blur first");
     
-}
+//     if (ok(blImage)) {
+//       console.log('begin blur');
+//       var radius = 20;
+//       blImage = blurImage(blImage, radius);
+//       console.log('done blur');
+//       blImage.drawTo(gcanvas);
+//     }
+//   }
+  
+//   // blur by moving random pixels
+//   function ensureInImage (coordinate, size) {
+//       // coordinate cannot be negative
+//       if (coordinate < 0) {
+//           return 0;
+//       }
+//       // coordinate must be in range [0 .. size-1]
+//       if (coordinate >= size) {
+//           return size - 1;
+//       }
+//       return coordinate;
+//   }
+  
+//   function getPixelNearby (image, x, y, diameter) {
+//       var dx = Math.random() * diameter - diameter / 2;
+//       var dy = Math.random() * diameter - diameter / 2;
+//       var nx = ensureInImage(x + dx, image.getWidth());
+//       var ny = ensureInImage(y + dy, image.getHeight());
+//       return image.getPixel(nx, ny);
+//   }
+  
+  
+//   function blurImage (image, radius) {
+//       var output = new SimpleImage(image.getWidth(), image.getHeight());
+//       for (var pixel of image.values()) {
+//           var x = pixel.getX();
+//           var y = pixel.getY();
+//           if (Math.random() > 0.5) {
+//               var other = getPixelNearby(image, x, y, radius);
+//               output.setPixel(x, y, other);
+//           }
+//           else {
+//               output.setPixel(x, y, pixel);
+//           }
+//       }
+//       return output;
+//   }
+
+
+
+
+
+
+
+
+
 
 // function imageIsLoaded() {
 //     if (image === null || ! image.complete()) {
