@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title lang="en">Miniproject</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+        integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <h1>Filter Fun</h1>
+    <canvas id="main-canvas">
+
+    </canvas>
+    <p>
+        Load Image
+        <input id="load-button" type="file" multiple="false" accept="image/*" onchange="upload()">
+    </p>
+    <p>Choose Filter
+        <input id="grey-button" type="button" value="Grayscale">
+        <input id="red-button" type="button" value="Red">
+        <input id="reset-button" type="button" value="Reset Image">
+    </p>
+
+
+    <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+    
+    <script src="./js/index.js"></script>
+</body>
+</html>
