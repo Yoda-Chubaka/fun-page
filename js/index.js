@@ -115,77 +115,62 @@ function doOrange() {
 
 function doYellow() {
   if (avg < 128) {
-    red = Math.round(2 * avg);
-    green = Math.round(2 * avg);
-    blue = 0;
+        pixel.setRed(2 * avg);
+        pixel.setGreen(2 * avg);
+        pixel.setBlue(0);
   } else {
-    red = 255;
-    green = 255;
-    blue = Math.round(2 * avg - 255);
+        pixel.setRed(255);
+        pixel.setGreen(255);
+        pixel.setBlue(2 * avg - 255);
   }
-  pixel.setRed(red);
-  pixel.setGreen(green);
-  pixel.setBlue(blue);
 }
 
 function doGreen() {
   if (avg < 128) {
-    red = 0;
-    green = Math.round(2*avg);
-    blue = 0;
+        pixel.setRed(0);
+        pixel.setGreen(2 * avg);
+        pixel.setBlue(0);
   } else {
-    red = Math.round(2*avg-255);
-    green = 255;
-    blue = Math.round(2*avg-255);
+        pixel.setRed(2*avg-255);
+        pixel.setGreen(255);
+        pixel.setBlue(2*avg-255);
   }
-  pixel.setRed(red);
-  pixel.setGreen(green);
-  pixel.setBlue(blue);
 }
 
 function doBlue() {
  if (avg < 128) {
-    red = 0;
-    green = 0;
-    blue = Math.round(2*avg);
+        pixel.setRed(0);
+        pixel.setGreen(0);
+        pixel.setBlue(2*avg);
   } else {
-    red = Math.round(2*avg-255);
-    green =Math.round(2*avg-255);
-    blue = 255;
+        pixel.setRed(2*avg-255);
+        pixel.setGreen(2*avg-255);
+        pixel.setBlue(255);
   }
-  pixel.setRed(red);
-  pixel.setGreen(green);
-  pixel.setBlue(blue);
 }
 
 function doIndigo() {
   if (avg < 128) {
-    red = Math.round(.8 * avg);
-    green = 0;
-    blue = Math.round(2 * avg);
+        pixel.setRed(0.8 * avg);
+        pixel.setGreen(2*avg-255);
+        pixel.setBlue(2 * avg);
   } else {
-    red = Math.round(1.2 * avg - 51);
-    green = Math.round(2*avg - 255);
-    blue = 255;
+        pixel.setRed(1.2 * avg - 51);
+        pixel.setGreen(2*avg-255);
+        pixel.setBlue(255);
   }
-  pixel.setRed(red);
-  pixel.setGreen(green);
-  pixel.setBlue(blue);
 }
 
 function doViolet() {
   if (avg < 128) {
-    red = Math.round(1.6 * avg);
-    green = 0;
-    blue = Math.round(1.6 * avg);
+        pixel.setRed(1.6 * avg);
+        pixel.setGreen(0);
+        pixel.setBlue(1.6 * avg);
   } else {
-    red = Math.round(0.4 * avg + 153 );
-    green = Math.round(2 * avg - 255);
-    blue = Math.round(0.4 * avg + 153 );
+        pixel.setRed(0.4 * avg + 153);
+        pixel.setGreen(2 * avg - 255);
+        pixel.setBlue(0.4 * avg + 153);
   }
-  pixel.setRed(red);
-  pixel.setGreen(green);
-  pixel.setBlue(blue);
 }
 
 
@@ -197,61 +182,6 @@ function doViolet() {
 
 
 
-
-
-// function makeRainbow() {
-//     var height = image.getHeight();
-//     var weight = image.getWidth();
-//     var line = Math.floor(height/7);
-//     var low = 0;
-//     var high = line;
-//     for (var i=0; i < 7; i+=1) {
-//         for(var j=low; j <= high; j+=1) {
-//             for(var x=0; x < weight; x+=1) {
-//             var pixel = image.getPixel(x,j);
-//             if (i === 0) {
-//                 pixel.setRed(255);
-//             }
-//             else if (i === 1) {
-//                 pixel.setRed(255);
-//                 pixel.setGreen(165);
-//             }
-//             else if (i === 2) {
-//                 pixel.setRed(255);
-//                 pixel.setGreen(255);
-//             }
-//             else if (i === 3) {
-//                 pixel.setGreen(255);
-//             }
-//             else if (i === 4) {
-//                 pixel.setBlue(255);
-//             }
-//             else if (i === 5) {
-//                 pixel.setRed(75);
-//                 pixel.setBlue(130);
-//             }
-//             else {
-//                 pixel.setRed(185);
-//                 pixel.setBlue(239);
-//             }
-//           }
-//         }
-//         low = high + 1;
-//         high = low + line;
-//         if (high >= height) {
-//            high = height-1;
-//         }
-//     }
-//     rainbowImage = new SimpleImage(fileInput);
-//     image.drawTo(imgCanvas);
-// }
-
-// function reset(){
-//     if (!image) {
-//       console.log("image reset");
-//       image.drawTo(imgCanvas);
-//     }
-//   }
 
 
 
