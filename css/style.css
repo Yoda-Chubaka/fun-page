@@ -1,19 +1,54 @@
 body {
-    background-color: blanchedalmond;
+    background-color: rgb(157, 226, 238);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+p {
+    color: white;
 }
 
 #main-canvas {
     height: 250px;
-    border: 1px solid grey;
+    border: 1px solid rgb(253, 251, 251);
 }
 
+.box-1 {
+    width: 700px;
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: rgb(23, 11, 129);
+}
 
+.box-2 {
+    padding-left: 80px;
+    padding-right: 80px;
+}
 
+.box-3 {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+
+.button {
+    min-width: 60px;
+}
+
+.button:hover,
+.button:focus {
+    cursor: pointer;
+}
 
 .make-blur {
     filter: blur(4px);
 }
 
 .no-filter {
-    filter: blur(0);
+    filter: none;
 }

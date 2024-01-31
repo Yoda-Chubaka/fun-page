@@ -211,14 +211,3 @@ function makeBlur() {
         alert("Image not loaded");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
