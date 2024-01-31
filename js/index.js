@@ -90,32 +90,27 @@ function drawRainbow() {
 
 function doRed() {
     if (avg < 128) {
-      red = Math.round(2*avg);
-      green = 0;
-      blue = 0;
+        pixel.setRed(2*avg);
+        pixel.setGreen(0);
+        pixel.setBlue(0);
     } else {
-      red = 255;
-      green = Math.round(2*avg-255);
-      blue = Math.round(2*avg-255);
+        pixel.setRed(255);
+        pixel.setGreen(2*avg-255);
+        pixel.setBlue(2*avg-255);
     }
-    pixel.setRed(red);
-    pixel.setGreen(green);
-    pixel.setBlue(blue);
+    
 }
 
 function doOrange() {
    if (avg < 128) {
-    red = Math.round(2 * avg);
-    green = Math.round(.8 * avg);
-    blue = 0;
+        pixel.setRed(2 * avg);
+        pixel.setGreen(0.8 * avg);
+        pixel.setBlue(0);
   } else {
-    red = 255;
-    green = Math.round(1.2 * avg - 51);
-    blue =  Math.round(2 * avg - 255);
+        pixel.setRed(255);
+        pixel.setGreen(1.2 * avg - 51);
+        pixel.setBlue(2 * avg - 255);   
   }
-  pixel.setRed(red);
-  pixel.setGreen(green);
-  pixel.setBlue(blue);
 }
 
 function doYellow() {
