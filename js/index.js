@@ -1,4 +1,4 @@
-var image;
+var image = null;
 var greyImage = null;
 var redImage = null;
 var rainbowImage = null;
@@ -6,13 +6,29 @@ var imgCanvas = document.getElementById("main-canvas");
 var fileInput = document.getElementById("load-button");
 
 function upload() {
+    doclear();
     image = new SimpleImage(fileInput);
     image.drawTo(imgCanvas);
 }
 
+function doclear(){
+    var ctx = imgCanvas.getContext("2d");
+    ctx.clearRect(0, 0, imgCanvas.height, imgCanvas.width);
+    image = null;
+    greyImage = null;
+    redImage = null;
+    rainbowImage = null;
+    imgCanvas.className = "no-filter";
+  }
+
 function reset() {
-    outImage = new SimpleImage(image);
-    outImage.drawTo(imgCanvas);
+    if (isImageLoad()) {
+        image = new SimpleImage(fileInput);
+        imgCanvas.className = "no-filter";
+        image.drawTo(imgCanvas);
+    } else {
+        alert("Image not loaded");
+    }
   }
   
 function isImageLoad() {
@@ -24,17 +40,33 @@ function isImageLoad() {
 }
 
 function makeGrey() {
+    if (isImageLoad()) {
+        drawGrey();
+    } else {
+        alert("Image not loaded");
+    }
+}
+
+function drawGrey() {
     for (var pixel of image.values()) {
         var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
         pixel.setRed(avg);
         pixel.setGreen(avg);
         pixel.setBlue(avg);
     }
-    greyImage = new SimpleImage(fileInput);
-    image.drawTo(imgCanvas);
+        greyImage = new SimpleImage(fileInput);
+        image.drawTo(imgCanvas); 
 }
 
-function makeRed() {
+function makeRedFilter() {
+    if (isImageLoad()) {
+        drawRedFilter();
+    } else {
+        alert("Image not loaded");
+    }
+}
+
+function drawRedFilter() {
     for (var pixel of image.values()) {
         var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
         if (avg < 128) {
@@ -47,16 +79,15 @@ function makeRed() {
             pixel.setBlue(avg*2 - 255);
         }
     }
-    redImage = new SimpleImage(fileInput);
-    image.drawTo(imgCanvas);
+        redImage = new SimpleImage(fileInput);
+        image.drawTo(imgCanvas);
 }
 
 function makeRainbow() {
   if (isImageLoad()) {
     drawRainbow();
-    outImage.drawTo(imgCanvas);
   } else {
-    alert("Image Not Loaded");
+    alert("Image not loaded");
   }
 }
 
@@ -65,30 +96,31 @@ function drawRainbow() {
   var rectHeight = outImage.getHeight();
   var line = Math.floor(rectHeight/7);
   var Y;
-  var X;
+//   var X;
   for (pixel of outImage.values()) {
-    X = pixel.getX();
+    // X = pixel.getX();
     Y = pixel.getY();
     avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
-    if (Y >= 6 * parseInt(line)) {
-      doViolet();
-    } else if (Y >= (5 * parseInt(line))) {
-      doIndigo();
-    } else if (Y >= (4 * parseInt(line))) {
-      doBlue();
-    } else if (Y >= (3 * parseInt(line))) {
-      doGreen();
-    } else if (Y >= (2 * parseInt(line))) {
-      doYellow();
-    } else if (Y >= parseInt(line)) {
-      doOrange();
+    if (Y >= 6 * line) {
+      makeViolet();
+    } else if (Y >= (5 * line)) {
+      makeIndigo();
+    } else if (Y >= (4 * line)) {
+      makeBlue();
+    } else if (Y >= (3 * line)) {
+      makeGreen();
+    } else if (Y >= (2 * line)) {
+      makeYellow();
+    } else if (Y >= line) {
+      makeOrange();
     } else {
-      doRed();
+      makeRed();
     }
   }
+  outImage.drawTo(imgCanvas);
 }
 
-function doRed() {
+function makeRed() {
     if (avg < 128) {
         pixel.setRed(2*avg);
         pixel.setGreen(0);
@@ -98,10 +130,9 @@ function doRed() {
         pixel.setGreen(2*avg-255);
         pixel.setBlue(2*avg-255);
     }
-    
 }
 
-function doOrange() {
+function makeOrange() {
    if (avg < 128) {
         pixel.setRed(2 * avg);
         pixel.setGreen(0.8 * avg);
@@ -113,7 +144,7 @@ function doOrange() {
   }
 }
 
-function doYellow() {
+function makeYellow() {
   if (avg < 128) {
         pixel.setRed(2 * avg);
         pixel.setGreen(2 * avg);
@@ -125,7 +156,7 @@ function doYellow() {
   }
 }
 
-function doGreen() {
+function makeGreen() {
   if (avg < 128) {
         pixel.setRed(0);
         pixel.setGreen(2 * avg);
@@ -137,7 +168,7 @@ function doGreen() {
   }
 }
 
-function doBlue() {
+function makeBlue() {
  if (avg < 128) {
         pixel.setRed(0);
         pixel.setGreen(0);
@@ -149,7 +180,7 @@ function doBlue() {
   }
 }
 
-function doIndigo() {
+function makeIndigo() {
   if (avg < 128) {
         pixel.setRed(0.8 * avg);
         pixel.setGreen(2*avg-255);
@@ -161,7 +192,7 @@ function doIndigo() {
   }
 }
 
-function doViolet() {
+function makeViolet() {
   if (avg < 128) {
         pixel.setRed(1.6 * avg);
         pixel.setGreen(0);
@@ -171,6 +202,14 @@ function doViolet() {
         pixel.setGreen(2 * avg - 255);
         pixel.setBlue(0.4 * avg + 153);
   }
+}
+
+function makeBlur() {
+    if (isImageLoad()) {   
+        imgCanvas.className = "make-blur";
+    } else {
+        alert("Image not loaded");
+    }
 }
 
 
@@ -183,82 +222,3 @@ function doViolet() {
 
 
 
-
-
-// function doblur() {
-
-//     console.log("blurring");
-//     blImage = copyImage(image);
-//     console.log("made blur first");
-    
-//     if (ok(blImage)) {
-//       console.log('begin blur');
-//       var radius = 20;
-//       blImage = blurImage(blImage, radius);
-//       console.log('done blur');
-//       blImage.drawTo(gcanvas);
-//     }
-//   }
-  
-//   // blur by moving random pixels
-//   function ensureInImage (coordinate, size) {
-//       // coordinate cannot be negative
-//       if (coordinate < 0) {
-//           return 0;
-//       }
-//       // coordinate must be in range [0 .. size-1]
-//       if (coordinate >= size) {
-//           return size - 1;
-//       }
-//       return coordinate;
-//   }
-  
-//   function getPixelNearby (image, x, y, diameter) {
-//       var dx = Math.random() * diameter - diameter / 2;
-//       var dy = Math.random() * diameter - diameter / 2;
-//       var nx = ensureInImage(x + dx, image.getWidth());
-//       var ny = ensureInImage(y + dy, image.getHeight());
-//       return image.getPixel(nx, ny);
-//   }
-  
-  
-//   function blurImage (image, radius) {
-//       var output = new SimpleImage(image.getWidth(), image.getHeight());
-//       for (var pixel of image.values()) {
-//           var x = pixel.getX();
-//           var y = pixel.getY();
-//           if (Math.random() > 0.5) {
-//               var other = getPixelNearby(image, x, y, radius);
-//               output.setPixel(x, y, other);
-//           }
-//           else {
-//               output.setPixel(x, y, pixel);
-//           }
-//       }
-//       return output;
-//   }
-
-
-
-
-
-
-
-
-
-
-// function imageIsLoaded() {
-//     if (image === null || ! image.complete()) {
-//         alert("Photo not loaded");
-//      }
-// }
-
-
-
-
-// if (fgImage === null || ! fgImage.complete()) {
-//     alert("Foreground not loaded");
-// }
-// if (bgImage === null || ! bgImage.complete()) {
-//     alert("Background not loaded");
-// }

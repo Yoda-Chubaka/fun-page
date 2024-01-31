@@ -6,3 +6,14 @@ body {
     height: 250px;
     border: 1px solid grey;
 }
+
+
+
+
+.make-blur {
+    filter: blur(4px);
+}
+
+.no-filter {
+    filter: blur(0);
+}
