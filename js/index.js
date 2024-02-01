@@ -2,23 +2,25 @@ var image = null;
 var greyImage = null;
 var redImage = null;
 var rainbowImage = null;
+var blurImage = null;
 var imgCanvas = document.getElementById("main-canvas");
 var fileInput = document.getElementById("load-button");
 
 function upload() {
-    doclear();
+    doClear();
     image = new SimpleImage(fileInput);
     image.drawTo(imgCanvas);
 }
 
-function doclear(){
+function doClear(){
     var ctx = imgCanvas.getContext("2d");
     ctx.clearRect(0, 0, imgCanvas.height, imgCanvas.width);
+    imgCanvas.className = "no-filter";
     image = null;
     greyImage = null;
     redImage = null;
     rainbowImage = null;
-    imgCanvas.className = "no-filter";
+    
   }
 
 function reset() {
@@ -41,6 +43,7 @@ function isImageLoad() {
 
 function makeGrey() {
     if (isImageLoad()) {
+        imgCanvas.className = "no-filter";
         drawGrey();
     } else {
         alert("Image not loaded");
@@ -60,6 +63,7 @@ function drawGrey() {
 
 function makeRedFilter() {
     if (isImageLoad()) {
+        imgCanvas.className = "no-filter";
         drawRedFilter();
     } else {
         alert("Image not loaded");
@@ -85,6 +89,7 @@ function drawRedFilter() {
 
 function makeRainbow() {
   if (isImageLoad()) {
+    imgCanvas.className = "no-filter";
     drawRainbow();
   } else {
     alert("Image not loaded");
@@ -96,9 +101,7 @@ function drawRainbow() {
   var rectHeight = outImage.getHeight();
   var line = Math.floor(rectHeight/7);
   var Y;
-//   var X;
   for (pixel of outImage.values()) {
-    // X = pixel.getX();
     Y = pixel.getY();
     avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
     if (Y >= 6 * line) {
@@ -205,8 +208,13 @@ function makeViolet() {
 }
 
 function makeBlur() {
-    if (isImageLoad()) {   
+    if (isImageLoad()) { 
+        greyImage = null;
+        redImage = null;
+        rainbowImage = null;
         imgCanvas.className = "make-blur";
+        blurImage = new SimpleImage(fileInput);
+        image.drawTo(imgCanvas);
     } else {
         alert("Image not loaded");
     }
