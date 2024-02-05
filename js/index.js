@@ -5,6 +5,11 @@ var rainbowImage = null;
 var blurImage = null;
 var imgCanvas = document.getElementById("main-canvas");
 var fileInput = document.getElementById("load-button");
+var fgImage = null;
+var bgImage = null;
+var canvasFg;
+var canvasBg;
+// var combineImage = null;
 
 function upload() {
     doClear();
@@ -236,11 +241,33 @@ function makeBlur() {
 
 // STEGANOGRAPHY
 
-// write your code here
+function loadMainImage() {
+  var imgFile = document.getElementById("fgFile");
+  fgImage = new SimpleImage(imgFile);
+  canvasFg = document.getElementById("fgCan");
+  fgImage.drawTo(canvasFg);
+}
 
-function crop(image, width, height) {
-  var croppedImage = new SimpleImage(image);
-  return croppedImage;
+function loadHiddenImage() {
+  var imgFile = document.getElementById("bgFile");
+  bgImage = new SimpleImage(imgFile);
+  canvasBg = document.getElementById("bgCan");
+  bgImage.drawTo(canvasBg);
+}
+
+function crop(image, width, height){
+  var n = new SimpleImage(width,height);
+  for(var p of image.values()){
+     var x = p.getX();
+     var y = p.getY();
+     if (x < width && y < height){
+  var np = n.getPixel(x,y);
+  np.setRed(p.getRed());
+  np.setBlue(p.getBlue());
+  np.setGreen(p.getGreen()); 
+}
+  }
+  return n;
 }
 
 function clearBits(colorval) {
@@ -266,28 +293,55 @@ function shift(image) {
     return image;
 }
 
-function combine(show, hide) {
-    var answer = new SimpleImage(show.getWidth(), show.getHeight());
-    for (var px of answer.values()) {
+// function newPv(p,q) {
+//   if ((p+q) > 255) {
+//     alert("Error!");
+//   } else {
+//     combine();
+//   }
+// }
+
+function combine(fgImage, bgImage) {
+    var output = new SimpleImage(fgImage.getWidth(), fgImage.getHeight());
+    for (var px of output.values()) {
         var x = px.getX();
         var y = px.getY();
-        var showPixel = show.getPixel(x, y);
-        var hidePixel = hide.getPixel(x, y);
+        var showPixel = fgImage.getPixel(x, y);
+        var hidePixel = bgImage.getPixel(x, y);
         px.setRed(showPixel.getRed() + hidePixel.getRed());
         px.setGreen(showPixel.getGreen() + hidePixel.getGreen());
         px.setBlue(showPixel.getBlue() + hidePixel.getBlue());
     }
-    return answer;
+        output.drawTo(canvasFg);
 }
 
-var start = new SimpleImage("usain.jpg");
-var hide = new SimpleImage("eastereggs.jpg");
-var smallImage1 = crop(start, 300, 300);
-var smallImage2 = crop(hide, 300, 300);
-smallImage1 = chopToHide(smallImage1);
-smallImage2 = shift(smallImage2);
-var ans = combine(smallImage1, smallImage2);
-print(smallImage1);
-print(smallImage2);
-print(ans);
+function doCombine() {
+  combine();
+}
+
+function clearCanvas() {
+  var contextFg = canvasFg.getContext("2d");
+  contextFg.clearRect(0, 0, canvasFg.width, canvasFg.height);
+  var contextBg = canvasBg.getContext("2d");
+  contextBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
+}
+
+// var start = new SimpleImage("usain.jpg");
+// var hide = new SimpleImage("eastereggs.jpg");
+// var smallImage1 = crop(start, 300, 300);
+// var smallImage2 = crop(hide, 300, 300);
+// smallImage1 = chopToHide(smallImage1);
+// smallImage2 = shift(smallImage2);
+// var ans = combine(smallImage1, smallImage2);
+// print(smallImage1);
+// print(smallImage2);
+// print(ans);
+// var start = new SimpleImage("astrachan.jpg");
+// var hide = new SimpleImage("pixabayhands.jpg");
+// start = chopToHide(start);
+// hide = shift(hide);
+// var ans = combine(start, hide);
+// // print(start);
+// // print(hide);
+// print(ans);
 

@@ -33,6 +33,46 @@
     </div>
     </div>
 
+    <section class="section-color-chromakey">
+        <h1>Web page with chromakey</h1>
+    <ul class="canvas-list">
+        <li id="draw-list">
+            <canvas id="fgCan" class="draw-box">
+
+            </canvas>
+        </li>
+        <li id="draw-list">
+            <canvas id="bgCan" class="draw-box">
+
+            </canvas>
+        </li>
+    </ul>
+
+    </canvas>
+    <div class="chromakey-box">
+        <ul class="chromakey-list">
+            <li>
+                <p class="chrom-text">
+                    Main Image:
+                    <input type="file" multiple="false" accept="image/*" id="fgFile" onchange="loadMainImage()">
+                </p>
+            </li>
+            <li>
+                <p class="chrom-text">
+                    Hidden Image:
+                    <input type="file" multiple="false" accept="image/*" id="bgFile" onchange="loadHiddenImage()">
+                </p>
+        </li>
+        </ul>
+       
+        <div class="chrom-buttons-box">
+            <input type="button" id="button-make-gray" class="chromakey-button onclick-button chromakey-left-button" value="Combine photos" onclick="doCombine()">
+            <input type="button" id="button-make-gray" class="chromakey-button onclick-button" value="Clean the canvas" onclick="clearCanvas()">
+        </div>
+    </div>
+
+    </section>
+
 
     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
     

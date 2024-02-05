@@ -11,6 +11,14 @@ p {
     color: white;
 }
 
+
+ul {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
 #main-canvas {
     height: 250px;
     border: 1px solid rgb(253, 251, 251);
@@ -51,4 +59,76 @@ p {
 
 .no-filter {
     filter: none;
+}
+
+
+.section-color-chromakey {
+    background-color: rgb(190, 86, 164);
+    padding-bottom: 30px;
+    margin-bottom: 40px;
+
+}
+
+.canvas-list {
+    display: flex;
+    justify-content: space-around;
+}
+
+.draw-box {
+    margin-bottom: 10px;
+    border: 1px solid rgb(32, 2, 82);
+    border-radius: 4px;
+    background-color: white;
+    width: 500px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+}
+
+.button-add-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grey-button {
+    margin-right: 50px;
+}
+
+.chromakey-box {
+    width: 490px;
+    background-color: rgb(189, 189, 247);
+    padding: 25px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.chrom-text {
+    margin-left: 5px;
+}
+
+.chrom-buttons-box {
+    width: 300px;
+    margin: 0 auto;
+}
+.chromakey-left-button {
+    margin-right: 15px;
+}
+
+.onclick-button {
+    border: 1px solid grey;
+    border-radius: 1px;
+    padding: 5px;
+}
+
+.onclick-button:hover,
+.onclick-button:focus {
+    color: white;
+    background-color: green;
+    cursor: pointer;
+    border: 1px solid green;
 }
