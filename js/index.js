@@ -212,10 +212,73 @@ function makeBlur() {
         greyImage = null;
         redImage = null;
         rainbowImage = null;
-        imgCanvas.className = "make-blur";
         blurImage = new SimpleImage(fileInput);
+        imgCanvas.className = "make-blur";
         image.drawTo(imgCanvas);
     } else {
         alert("Image not loaded");
     }
 }
+
+
+// var x = 5;
+// var y = 3;
+// var z = 6;
+
+// console.log("above function:", z);
+// function qwerty(x, y) {
+//   z = x + y;
+//   return z;
+// }
+// console.log("calling function:", qwerty(8, 9));
+// console.log("outside function:", z);
+
+
+// STEGANOGRAPHY
+
+function clearBits(colorval) {
+  var x = Math.floor(colorval/16) * 16;
+  return x;
+}
+
+function chopToHide(image) {
+  for (var px of image.values()) {
+      px.setRed(clearBits(px.getRed()));
+      px.setGreen(clearBits(px.getGreen()));
+      px.setBlue(clearBits(px.getBlue()));
+  }
+  return image;
+}
+
+function shift(image) {
+  for (var px of image.values()) {
+      px.setRed(px.getRed() / 16);
+      px.setGreen(px.getGreen() / 16);
+      px.setBlue(px.getBlue() / 16);
+  }
+  return image;
+}
+
+function combine(show, hide) {
+  var answer = new SimpleImage(show.getWidth(), show.getHeight());
+  for (var px of answer.values()) {
+      var x = px.getX();
+      var y = px.getY();
+      var showPixel = show.getPixel(x, y);
+      var hidePixel = hide.getPixel(x, y);
+      px.setRed(showPixel.getRed() + hidePixel.getRed());
+      px.setGreen(showPixel.getGreen() + hidePixel.getGreen());
+      px.setBlue(showPixel.getBlue() + hidePixel.getBlue());
+  }
+  return answer;
+}
+
+var start = new SimpleImage("usain.jpg");
+var hide = new SimpleImage("skyline.jpg");
+
+start = chopToHide(start);
+hide = shift(hide);
+var ans = combine(start, hide);
+print(start);
+print(hide);
+print(ans);
