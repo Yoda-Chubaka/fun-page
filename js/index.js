@@ -281,7 +281,7 @@ function clearCanvas() {
   contextBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
 }
 
-// PAINT CANVAS
+// PAINTING CANVAS
 var paintcanvas = document.getElementById("canvas1");
 var context = paintcanvas.getContext("2d");
 var color = 'black';
@@ -336,6 +336,48 @@ function changeColor(newColor) {
 function resizeBrush(newSize) {
     radius = newSize;
     document.getElementById("sizeOutput").value = newSize;
+}
+
+// TODO LIST
+function addTask() {
+  var input = document.getElementById("input");
+  var newTask = input.value;
+  if (newTask != "") {
+    var item = document.createElement("li");
+item.innerHTML = '<input type="button" class="done" onclick="markDone(this.parentNode)" value="✓" /> ' +
+                 '<input type="button" class="remove" onclick="remove(this.parentNode)" value="✕" /> ' +
+                 '<input type="button" class="important" onclick="markImportant(this.parentNode)" value="!" /> ' +
+                 newTask;
+
+    document.getElementById("tasks").appendChild(item);
+
+    input.value = "";
+    input.placeholder = "enter next task …";
+  }
+}
+
+function markDone(item) {
+  item.className = 'finished';
+}
+
+function remove(item) {
+  if (item.className == 'finished') {
+      item.remove();
+  }
+}
+
+function markImportant(item) {
+  item.className = 'important';
+}
+
+function doAbout() {
+  document.getElementById("textabout").innerHTML = "Author is Anastasiia Polishchuk";
+
+}
+
+function clearAbout() {
+  var element = document.getElementById("textabout");
+  element.innerHTML = "";
 }
 
 

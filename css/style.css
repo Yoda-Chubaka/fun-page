@@ -1,5 +1,9 @@
 body {
-    background-color : #9ac6ee;
+    background-color: rgb(218, 226, 252);
+    background-image: url('../src/bg-image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 h1, h2 {
@@ -31,7 +35,7 @@ ul {
     margin-left: auto;
     margin-right: auto;
     padding: 20px;
-    background-color: rgb(23, 11, 129);
+    background-color: rgba(23, 11, 129, 0.9);
 }
 
 .box-2 {
@@ -61,9 +65,8 @@ ul {
     filter: none;
 }
 
-
 .div-color-chromakey {
-    background-color: rgb(190, 86, 164);
+    background-color: rgba(190, 86, 164, 0.9);
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -104,7 +107,7 @@ ul {
 
 .chromakey-box {
     width: 490px;
-    background-color: rgb(189, 189, 247);
+    background-color: rgba(189, 189, 247, 0.9);
     padding: 25px;
     margin: 0 auto;
     margin-top: 20px;
@@ -137,10 +140,12 @@ ul {
 }
 
 .square-container {
-    margin-left: 20px;
-    margin-right: 20px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 20px;
-    background-color: rgb(179, 110, 245);
+    background-color: rgba(179, 110, 245, 0.9);
+    border-radius: 8px;
 }
 
 .square-box {
@@ -190,6 +195,7 @@ ul {
 .paragraph-draw-options {
     margin-right: 15px;
 }
+
 .input-set {
     border-radius: 4px;
     border: 1px solid grey;
@@ -214,3 +220,151 @@ ul {
 .options-button:focus {
     cursor: pointer;
 }
+
+
+.container {
+    /* border: 2px solid blue; */
+    border-radius: 8px;
+    width: 800px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background-color: rgba(153, 153, 238, 0.9);
+    
+}
+
+  .done {
+    background-color: green;
+    border: 1px solid rgb(1, 44, 1);
+    border-radius: 4px;
+  }
+
+  .done:hover,
+  .done:focus {
+    background-color: rgb(2, 59, 2);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .remove {
+    background-color: red;
+    border: 1px solid rgb(54, 1, 1);
+    border-radius: 4px;
+  }
+
+  .remove:hover,
+  .remove:focus {
+    background-color: rgb(77, 2, 2);
+    color: white;
+    cursor: pointer;
+  }
+
+  .important {
+    background-color: lightblue;
+    border: 1px solid rgb(3, 34, 44);
+    border-radius: 4px;
+  }
+
+  .important:hover,
+  .important:focus {
+    background-color: rgb(4, 58, 77);
+    color: white;
+    cursor: pointer;
+  }
+
+  li.finished {
+    color: white;
+    background-color: gray;
+    text-decoration: line-through;
+  }
+  
+  .todo-input {
+    font-size: 18px;
+    width: 646px;
+    padding: 10.3px;
+    border: 0;
+    border-radius: 2px;
+  }
+
+  #input:hover,
+  #input:focus {
+    outline: 0;
+    border-style: none;
+    border-radius: 2px;
+  }
+  
+  .todo-button {
+    font-size: 1.2em;
+    margin: -6px 4px 0px 0px;
+  }
+
+  #addButton {
+    padding: 10px;
+    min-width: 100px;
+    border: 0;
+    border-radius: 2px;
+  }
+
+  #addButton:hover,
+  #addButton:focus {
+    background-color: rgb(99, 58, 133);
+    color: white;
+    cursor: pointer;
+    outline: 0;
+    border-style: none;
+    border-radius: 2px;
+  }
+
+  
+  /* Крок 10 нижче тут */
+  .aboutcolor {
+    background-color: rgb(43, 3, 88);
+  }
+  
+  /* Крок 12 нижче тут */
+  #divabout {
+    width: 300px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+
+  #textabout {
+    font-size: 20px;
+    padding-left: 10px;
+    color: white;
+  }
+
+  #aboutButton {
+    padding: 10px;
+    min-width: 100px;
+    border: 0;
+    border-radius: 2px;
+  }
+
+  #aboutButton:hover,
+  #aboutButton:focus {
+    background-color: rgb(99, 58, 133);
+    color: white;
+    cursor: pointer;
+    outline: 0;
+    border-style: none;
+    border-radius: 2px;
+  }
+
+  #clearButton {
+    padding: 10px;
+    min-width: 100px;
+    border-style: none;
+    border-radius: 2px;
+  }
+
+  #clearButton:hover,
+  #clearButton:focus {
+    background-color: rgb(99, 58, 133);
+    color: white;
+    cursor: pointer;
+    outline: 0;
+    border-style: none;
+    border-radius: 2px;
+  }
