@@ -9,7 +9,8 @@ var fgImage = null;
 var bgImage = null;
 var canvasFg;
 var canvasBg;
-// var combineImage = null;
+
+// FILTERS (grey, red, rainbow, blur)
 
 function upload() {
     doClear();
@@ -225,6 +226,119 @@ function makeBlur() {
     }
 }
 
+// CHROMAKEY
+function uploadGreen() {
+  var imgCanvas = document.getElementById("canvas1");
+  var fileInput = document.getElementById("input-file");
+  image = new SimpleImage(fileInput);
+  
+  image.drawTo(imgCanvas);
+  // greyImage.drawTo();
+}
+
+
+function loadForegroundImage() {
+  var imgFile = document.getElementById("fgFile");
+  fgImage = new SimpleImage(imgFile);
+  canvasFg = document.getElementById("fgCan");
+  fgImage.drawTo(canvasFg);
+}
+
+function loadBackgroundImage() {
+  var imgFile = document.getElementById("bgFile");
+  bgImage = new SimpleImage(imgFile);
+  canvasBg = document.getElementById("bgCan");
+  bgImage.drawTo(canvasBg);
+}
+
+function doGreenScreen() {
+  if (fgImage === null || ! fgImage.complete()) {
+      alert("Foreground not loaded");
+  }
+  if (bgImage === null || ! bgImage.complete()) {
+      alert("Background not loaded");
+  }
+  var output = new SimpleImage(fgImage.getWidth(), fgImage.getHeight());
+  var greenThreshold = 240;
+      for (var pixel of fgImage.values()) {
+      var x = pixel.getX();
+      var y = pixel.getY();
+      if (pixel.getGreen() > greenThreshold) {
+          var bgPixel = bgImage.getPixel(x, y);
+          output.setPixel(x, y, bgPixel);
+      }
+      else {
+          output.setPixel(x, y, pixel);
+      }
+  }
+  output.drawTo(canvasBg);
+}
+
+function clearCanvas() {
+  var contextFg = canvasFg.getContext("2d");
+  contextFg.clearRect(0, 0, canvasFg.width, canvasFg.height);
+  var contextBg = canvasBg.getContext("2d");
+  contextBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
+}
+
+// PAINT CANVAS
+var paintcanvas = document.getElementById("canvas1");
+var context = paintcanvas.getContext("2d");
+var color = 'black';
+var radius = 50;
+var isPainting = false;
+
+function setWidth(value) {
+    if (isNumeric(value)) {
+        paintcanvas.width = value;
+    }
+}
+
+function setHeight(value) {
+    if (isNumeric(value)) {
+        paintcanvas.height = value;
+    }
+}
+
+function clearCanvas() {
+    context.clearRect(0, 0, paintcanvas.width, paintcanvas.height);
+}
+
+function paintCircle(x, y) {
+    context.beginPath();
+    context.arc(x, y, radius, 0, Math.PI * 2, true);
+    context.fillStyle = color;
+    context.fill();
+}
+
+function isNumeric(value) {
+    return !isNaN(value);
+}
+
+function startPaint() {
+    isPainting = true;
+}
+
+function endPaint() {
+    isPainting = false;
+}
+
+function doPaint(x, y) {
+    if (isPainting === true) {
+        paintCircle(x, y);
+    }
+}
+
+function changeColor(newColor) {
+    color = newColor;
+}
+
+function resizeBrush(newSize) {
+    radius = newSize;
+    document.getElementById("sizeOutput").value = newSize;
+}
+
+
 
 // var x = 5;
 // var y = 3;
@@ -241,90 +355,82 @@ function makeBlur() {
 
 // STEGANOGRAPHY
 
-function loadMainImage() {
-  var imgFile = document.getElementById("fgFile");
-  fgImage = new SimpleImage(imgFile);
-  canvasFg = document.getElementById("fgCan");
-  fgImage.drawTo(canvasFg);
-}
-
-function loadHiddenImage() {
-  var imgFile = document.getElementById("bgFile");
-  bgImage = new SimpleImage(imgFile);
-  canvasBg = document.getElementById("bgCan");
-  bgImage.drawTo(canvasBg);
-}
-
-function crop(image, width, height){
-  var n = new SimpleImage(width,height);
-  for(var p of image.values()){
-     var x = p.getX();
-     var y = p.getY();
-     if (x < width && y < height){
-  var np = n.getPixel(x,y);
-  np.setRed(p.getRed());
-  np.setBlue(p.getBlue());
-  np.setGreen(p.getGreen()); 
-}
-  }
-  return n;
-}
-
-function clearBits(colorval) {
-    var x = Math.floor(colorval/16) * 16;
-    return x;
-}
-
-function chopToHide(image) {
-    for (var px of image.values()) {
-        px.setRed(clearBits(px.getRed()));
-        px.setGreen(clearBits(px.getGreen()));
-        px.setBlue(clearBits(px.getBlue()));
-    }
-    return image;
-}
-
-function shift(image) {
-    for (var px of image.values()) {
-        px.setRed(px.getRed() / 16);
-        px.setGreen(px.getGreen() / 16);
-        px.setBlue(px.getBlue() / 16);
-    }
-    return image;
-}
-
-// function newPv(p,q) {
-//   if ((p+q) > 255) {
-//     alert("Error!");
-//   } else {
-//     combine();
-//   }
+// function loadMainImage() {
+//   var imgFile = document.getElementById("fgFile");
+//   fgImage = new SimpleImage(imgFile);
+//   canvasFg = document.getElementById("fgCan");
+//   fgImage.drawTo(canvasFg);
 // }
 
-function combine(fgImage, bgImage) {
-    var output = new SimpleImage(fgImage.getWidth(), fgImage.getHeight());
-    for (var px of output.values()) {
-        var x = px.getX();
-        var y = px.getY();
-        var showPixel = fgImage.getPixel(x, y);
-        var hidePixel = bgImage.getPixel(x, y);
-        px.setRed(showPixel.getRed() + hidePixel.getRed());
-        px.setGreen(showPixel.getGreen() + hidePixel.getGreen());
-        px.setBlue(showPixel.getBlue() + hidePixel.getBlue());
-    }
-        output.drawTo(canvasFg);
-}
+// function loadHiddenImage() {
+//   var imgFile = document.getElementById("bgFile");
+//   bgImage = new SimpleImage(imgFile);
+//   canvasBg = document.getElementById("bgCan");
+//   bgImage.drawTo(canvasBg);
+// }
 
-function doCombine() {
-  combine();
-}
+// function crop(image, width, height){
+//   var n = new SimpleImage(width,height);
+//   for(var p of image.values()){
+//      var x = p.getX();
+//      var y = p.getY();
+//      if (x < width && y < height){
+//   var np = n.getPixel(x,y);
+//   np.setRed(p.getRed());
+//   np.setBlue(p.getBlue());
+//   np.setGreen(p.getGreen()); 
+// }
+//   }
+//   return n;
+// }
 
-function clearCanvas() {
-  var contextFg = canvasFg.getContext("2d");
-  contextFg.clearRect(0, 0, canvasFg.width, canvasFg.height);
-  var contextBg = canvasBg.getContext("2d");
-  contextBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
-}
+// function clearBits(colorval) {
+//     var x = Math.floor(colorval/16) * 16;
+//     return x;
+// }
+
+// function chopToHide(image) {
+//     for (var px of image.values()) {
+//         px.setRed(clearBits(px.getRed()));
+//         px.setGreen(clearBits(px.getGreen()));
+//         px.setBlue(clearBits(px.getBlue()));
+//     }
+//     return image;
+// }
+
+// function shift(image) {
+//     for (var px of image.values()) {
+//         px.setRed(px.getRed() / 16);
+//         px.setGreen(px.getGreen() / 16);
+//         px.setBlue(px.getBlue() / 16);
+//     }
+//     return image;
+// }
+
+// function combine(fgImage, bgImage) {
+//     var output = new SimpleImage(fgImage.getWidth(), fgImage.getHeight());
+//     for (var px of output.values()) {
+//         var x = px.getX();
+//         var y = px.getY();
+//         var showPixel = fgImage.getPixel(x, y);
+//         var hidePixel = bgImage.getPixel(x, y);
+//         px.setRed(showPixel.getRed() + hidePixel.getRed());
+//         px.setGreen(showPixel.getGreen() + hidePixel.getGreen());
+//         px.setBlue(showPixel.getBlue() + hidePixel.getBlue());
+//     }
+//         output.drawTo(canvasFg);
+// }
+
+// function doCombine() {
+//   combine();
+// }
+
+// function clearCanvas() {
+//   var contextFg = canvasFg.getContext("2d");
+//   contextFg.clearRect(0, 0, canvasFg.width, canvasFg.height);
+//   var contextBg = canvasBg.getContext("2d");
+//   contextBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
+// }
 
 // var start = new SimpleImage("usain.jpg");
 // var hide = new SimpleImage("eastereggs.jpg");

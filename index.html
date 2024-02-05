@@ -33,7 +33,7 @@
     </div>
     </div>
 
-    <section class="section-color-chromakey">
+    <div class="div-color-chromakey">
         <h1>Web page with chromakey</h1>
     <ul class="canvas-list">
         <li id="draw-list">
@@ -53,25 +53,64 @@
         <ul class="chromakey-list">
             <li>
                 <p class="chrom-text">
-                    Main Image:
-                    <input type="file" multiple="false" accept="image/*" id="fgFile" onchange="loadMainImage()">
+                    Foreground Image:
+                    <input type="file" multiple="false" accept="image/*" id="fgFile" onchange="loadForegroundImage()">
                 </p>
             </li>
             <li>
                 <p class="chrom-text">
-                    Hidden Image:
-                    <input type="file" multiple="false" accept="image/*" id="bgFile" onchange="loadHiddenImage()">
+                    Background Image:
+                    <input type="file" multiple="false" accept="image/*" id="bgFile" onchange="loadBackgroundImage()">
                 </p>
         </li>
         </ul>
        
         <div class="chrom-buttons-box">
-            <input type="button" id="button-make-gray" class="chromakey-button onclick-button chromakey-left-button" value="Combine photos" onclick="doCombine()">
+            <input type="button" id="button-make-gray" class="chromakey-button onclick-button chromakey-left-button" value="Combine photos" onclick="doGreenScreen()">
             <input type="button" id="button-make-gray" class="chromakey-button onclick-button" value="Clean the canvas" onclick="clearCanvas()">
         </div>
     </div>
 
-    </section>
+</div>
+
+
+    <div class="square-container">
+        <h2>You can draw everything here!</h2>
+        <div class="box-draw-options">
+            <p class="paragraph-draw-options">
+                Set Width
+                <input class="input-set" type="text" onchange="setWidth(this.value)">
+            </p>
+            
+            <p>
+                Set Height
+                <input class="input-set" type="text" onchange="setHeight(this.value)">
+            </p>
+        </div>
+        
+        <ul class="canvas-list">
+            <li id="draw-list">
+                <canvas id="canvas1" class="draw-box" onmousedown="startPaint()" onmouseup="endPaint()" onmousemove="doPaint(event.offsetX, event.offsetY)">
+
+                </canvas>
+            </li>
+        </ul>
+        <div class="box-draw-options">
+            <p class="paragraph-draw-options">
+                Brush color
+                <input class="options-button" type="color" value="#000" onchange="changeColor(this.value)">
+            </p>
+            
+            <p class="paragraph-draw-options">
+                Brush size
+                <input class="range-button" type="range" id="sizeInput" min="1" max="50" value="50" oninput="resizeBrush(this.value)">
+                <output id="sizeOutput">50</output>
+            </p>
+            <p>
+                <input class="onclick-button" type="button" id="clear" value="Clear Canvas" onclick="clearCanvas()">
+            </p>
+        </div>
+    </div>
 
 
     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
