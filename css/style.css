@@ -23,6 +23,16 @@ ul {
     padding-left: 0;
 }
 
+.make-list {
+  list-style-type: none;
+  background-color: #eee;
+  border: 1px solid #c3c3c3;
+  padding: 10px 0px 10px 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  width: 100%;
+}
+
 #main-canvas {
     height: 250px;
     border: 1px solid rgb(253, 251, 251);
@@ -31,9 +41,10 @@ ul {
 .box-1 {
     width: 700px;
     border-radius: 8px;
-    margin-top: 50px;
+    margin-top: 60px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 40px;
     padding: 20px;
     background-color: rgba(23, 11, 129, 0.9);
 }
@@ -50,11 +61,19 @@ ul {
 
 .button {
     min-width: 60px;
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .button:hover,
 .button:focus {
     cursor: pointer;
+    background-color: rgb(72, 42, 97);
+    color: white;
+    outline: 0;
+    border: 0;
 }
 
 .make-blur {
@@ -107,7 +126,8 @@ ul {
 
 .chromakey-box {
     width: 490px;
-    background-color: rgba(189, 189, 247, 0.9);
+    border-radius: 6px;
+    background-color: rgba(189, 189, 247, 0.5);
     padding: 25px;
     margin: 0 auto;
     margin-top: 20px;
@@ -143,7 +163,7 @@ ul {
     width: 800px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     background-color: rgba(179, 110, 245, 0.9);
     border-radius: 8px;
 }
@@ -222,149 +242,160 @@ ul {
 }
 
 
+
+
 .container {
-    /* border: 2px solid blue; */
-    border-radius: 8px;
-    width: 800px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-    background-color: rgba(153, 153, 238, 0.9);
-    
+  border-radius: 8px;
+  width: 800px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  padding: 20px;
+  background-color: rgba(153, 153, 238, 0.9);
+  
 }
 
-  .done {
-    background-color: green;
-    border: 1px solid rgb(1, 44, 1);
-    border-radius: 4px;
-  }
+/* Крок 5 нижче тут */
+.done {
+  background-color: green;
+  border: 1px solid rgb(1, 44, 1);
+  border-radius: 4px;
+}
 
-  .done:hover,
-  .done:focus {
-    background-color: rgb(2, 59, 2);
-    color: white;
-    cursor: pointer;
-  }
-  
-  .remove {
-    background-color: red;
-    border: 1px solid rgb(54, 1, 1);
-    border-radius: 4px;
-  }
+.done:hover,
+.done:focus {
+  background-color: rgb(2, 59, 2);
+  color: white;
+  cursor: pointer;
+}
 
-  .remove:hover,
-  .remove:focus {
-    background-color: rgb(77, 2, 2);
-    color: white;
-    cursor: pointer;
-  }
+.remove {
+  background-color: red;
+  border: 1px solid rgb(54, 1, 1);
+  border-radius: 4px;
+}
 
-  .important {
-    background-color: lightblue;
-    border: 1px solid rgb(3, 34, 44);
-    border-radius: 4px;
-  }
+.remove:hover,
+.remove:focus {
+  background-color: rgb(77, 2, 2);
+  color: white;
+  cursor: pointer;
+}
 
-  .important:hover,
-  .important:focus {
-    background-color: rgb(4, 58, 77);
-    color: white;
-    cursor: pointer;
-  }
+.important {
+  background-color: lightblue;
+  border: 1px solid rgb(3, 34, 44);
+  border-radius: 4px;
+}
 
-  li.finished {
-    color: white;
-    background-color: gray;
-    text-decoration: line-through;
-  }
-  
-  .todo-input {
-    font-size: 18px;
-    width: 646px;
-    padding: 10.3px;
-    border: 0;
-    border-radius: 2px;
-  }
+.important:hover,
+.important:focus {
+  background-color: rgb(4, 58, 77);
+  color: white;
+  cursor: pointer;
+}
 
-  #input:hover,
-  #input:focus {
-    outline: 0;
-    border-style: none;
-    border-radius: 2px;
-  }
-  
-  .todo-button {
-    font-size: 1.2em;
-    margin: -6px 4px 0px 0px;
-  }
+/* позначити завдання як виконане */
+/* Крок 6 нижче тут */
+li.finished {
+  color: white;
+  background-color: gray;
+  text-decoration: line-through;
+  list-style-type: none;
+  border: 1px solid #c3c3c3;
+  padding: 10px 0px 10px 5px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  width: 100%;
+}
 
-  #addButton {
-    padding: 10px;
-    min-width: 100px;
-    border: 0;
-    border-radius: 2px;
-  }
+.todo-text-input {
+  font-size: 16px;
+  width: 650px;
+  padding: 5px;
+  border: 0;
+  border-radius: 2px;
+}
 
-  #addButton:hover,
-  #addButton:focus {
-    background-color: rgb(99, 58, 133);
-    color: white;
-    cursor: pointer;
-    outline: 0;
-    border-style: none;
-    border-radius: 2px;
-  }
+#input:hover,
+#input:focus {
+  outline: 0;
+  border-style: none;
+  border-radius: 2px;
+}
 
-  
-  /* Крок 10 нижче тут */
-  .aboutcolor {
-    background-color: rgb(43, 3, 88);
-  }
-  
-  /* Крок 12 нижче тут */
-  #divabout {
-    width: 300px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-  }
+.todo-button-input {
+  font-size: 16px;
+  margin: -6px 4px 0px 0px;
+}
 
-  #textabout {
-    font-size: 20px;
-    padding-left: 10px;
-    color: white;
-  }
+#addButton {
+  padding: 5px;
+  min-width: 100px;
+  border: 0;
+  border-radius: 2px;
+}
 
-  #aboutButton {
-    padding: 10px;
-    min-width: 100px;
-    border: 0;
-    border-radius: 2px;
-  }
+#addButton:hover,
+#addButton:focus {
+  background-color: rgb(72, 42, 97);
+  color: white;
+  cursor: pointer;
+  outline: 0;
+  border-style: none;
+  border-radius: 2px;
+}
 
-  #aboutButton:hover,
-  #aboutButton:focus {
-    background-color: rgb(99, 58, 133);
-    color: white;
-    cursor: pointer;
-    outline: 0;
-    border-style: none;
-    border-radius: 2px;
-  }
 
-  #clearButton {
-    padding: 10px;
-    min-width: 100px;
-    border-style: none;
-    border-radius: 2px;
-  }
+/* Крок 10 нижче тут */
+.aboutcolor {
+  background-color: rgb(72, 42, 97);
+}
 
-  #clearButton:hover,
-  #clearButton:focus {
-    background-color: rgb(99, 58, 133);
-    color: white;
-    cursor: pointer;
-    outline: 0;
-    border-style: none;
-    border-radius: 2px;
-  }
+/* Крок 12 нижче тут */
+#divabout {
+  width: 270px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+#textabout {
+  font-size: 18px;
+  padding-left: 10px;
+  color: white;
+}
+
+#aboutButton {
+  padding: 5px;
+  min-width: 100px;
+  border: 0;
+  border-radius: 2px;
+}
+
+#aboutButton:hover,
+#aboutButton:focus {
+  background-color: rgb(72, 42, 97);
+  color: white;
+  cursor: pointer;
+  outline: 0;
+  border-style: none;
+  border-radius: 2px;
+}
+
+#clearButton {
+  padding: 5px;
+  min-width: 100px;
+  border-style: none;
+  border-radius: 2px;
+}
+
+#clearButton:hover,
+#clearButton:focus {
+  background-color: rgb(72, 42, 97);
+  color: white;
+  cursor: pointer;
+  outline: 0;
+  border-style: none;
+  border-radius: 2px;
+}

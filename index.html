@@ -21,13 +21,13 @@
     <div class="box-3">
         <p>
             Load Image
-            <input id="load-button" class="button" type="file" multiple="false" accept="image/*" onchange="upload()">
+            <input id="load-button" type="file" multiple="false" accept="image/*" onchange="upload()">
         </p>
         <p>Choose Filter
+            <input id="blur-button" class="button" type="button" value="Blur" onclick="makeBlur()">
             <input id="grey-button" class="button" type="button" value="Greyscale" onclick="makeGrey()">
             <input id="red-button" class="button" type="button" value="Red" onclick="makeRedFilter()">
             <input id="rainbow-button" class="button" type="button" value="Rainbow" onclick="makeRainbow()">
-            <input id="blur-button" class="button" type="button" value="Blur" onclick="makeBlur()">
             <input id="reset-button" class="button" type="button" value="Reset Image" onclick="reset()">
         </p>
     </div>
@@ -115,14 +115,14 @@
 
     <div class="container">
         <h1 id="myHeader">TODO List</h1>
-    <input type="button" class="todo-button" id="addButton" onclick="addTask()" value="Add" />
-    <input type="text" class="todo-input" id="input" placeholder="enter task …" />
+    <input type="button" class="todo-button-input" id="addButton" onclick="addTask()" value="Add" />
+    <input type="text" class="todo-text-input" id="input" placeholder="enter task …" />
   <hr>
   <ul id="tasks">
-    <li>
-      <input type="button" class="done todo-button" onclick="markDone(this.parentNode)" value="✓" />
-      <input type="button" class="remove todo-button" onclick="remove(this.parentNode)" value="✕" />
-      <input type="button" class="important todo-button" onclick="markImportant(this.parentNode)" value="!" />
+    <li class="make-list">
+      <input type="button" class="done" onclick="markDone(this.parentNode)" value="✓" />
+      <input type="button" class="remove" onclick="remove(this.parentNode)" value="✕" />
+      <input type="button" class="important" onclick="markImportant(this.parentNode)" value="!" />
       make todo list
     </li>
   </ul>
@@ -130,8 +130,8 @@
   <div id="divabout" class="aboutcolor">
     <p id="textabout"></p>
   </div>
-  <input type="button" class="todo-button" id="aboutButton" onclick="doAbout()" value="About" />
-  <input type="button" class="todo-button" id="clearButton" onclick="clearAbout()" value="Clear" />
+  <input type="button" class="todo-button-input" id="aboutButton" onclick="doAbout()" value="About" />
+  <input type="button" class="todo-button-input" id="clearButton" onclick="clearAbout()" value="Clear" />
     </div>
 
     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
