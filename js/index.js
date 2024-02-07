@@ -233,7 +233,6 @@ function uploadGreen() {
   image = new SimpleImage(fileInput);
   
   image.drawTo(imgCanvas);
-  // greyImage.drawTo();
 }
 
 
@@ -289,14 +288,32 @@ var radius = 50;
 var isPainting = false;
 
 function setWidth(value) {
-    if (isNumeric(value)) {
+    if (isNumeric(value) && value<800 && value>0) {
         paintcanvas.width = value;
+    } 
+    else if (value>=800) {
+      alert("You should enter a smaller number!")
+    }
+    else if (value<=0) {
+      alert("You should enter a positive number!")
+    }
+    else if (!Number.isInteger(value)) {
+      alert("You should enter integer number!")
     }
 }
 
 function setHeight(value) {
-    if (isNumeric(value)) {
+    if (isNumeric(value) && value<800 && value>0) {
         paintcanvas.height = value;
+    }
+    else if (value>=800) {
+      alert("You should enter a smaller number!")
+    }
+    else if (value<=0) {
+      alert("You should enter a positive number!")
+    }
+    else if (!Number.isInteger(value)) {
+      alert("You should enter integer number!")
     }
 }
 
@@ -341,21 +358,15 @@ function resizeBrush(newSize) {
 // TODO LIST
 function addTask() {
   var input = document.getElementById("input");
-  // отримати поточний текст з поля введення
   var newTask = input.value;
-  // додавати новий елемент до списку, тільки якщо було введено якийсь текст 
   if (newTask != "") {
-    // створити новий елемент списку HTML
     var item = document.createElement("li");
     item.className = "make-list"
-    // додати HTML для кнопок і тексту нового завдання
-    // Зверніть увагу, що потрібно використовувати одинарні лапки '' замість подвійних "" в HTML
 item.innerHTML = '<input type="button" class="done" onclick="markDone(this.parentNode)" value="✓" /> ' +
                  '<input type="button" class="remove" onclick="remove(this.parentNode)" value="✕" /> ' +
                  '<input type="button" class="important" onclick="markImportant(this.parentNode)" value="!" /> ' +
                  newTask;
 
-    // додати новий елемент до наявного списку
     document.getElementById("tasks").appendChild(item);
 
     input.value = "";
@@ -363,31 +374,25 @@ item.innerHTML = '<input type="button" class="done" onclick="markDone(this.paren
   }
 }
 
-// змінити стиль, що використовується для цього елемента
 function markDone(item) {
   item.className = 'finished';
 }
 
-/* Крок 7 нижче тут */
 function remove(item) {
-  // повністю видалити елемент з документа
   if (item.className == 'finished') {
       item.remove();
   }
 }
 
-// highlight item from document (виділити пункт у списку)
 function markImportant(item) {
   item.className = 'important';
 }
 
-/* Крок 11 нижче тут */
 function doAbout() {
   document.getElementById("textabout").innerHTML = "Author is Anastasiia Polishchuk";
 
 }
 
-/* Крок 14 нижче тут */
 function clearAbout() {
   var element = document.getElementById("textabout");
   element.innerHTML = "";
@@ -395,114 +400,5 @@ function clearAbout() {
 
 
 
-// var x = 5;
-// var y = 3;
-// var z = 6;
 
-// console.log("above function:", z);
-// function qwerty(x, y) {
-//   z = x + y;
-//   return z;
-// }
-// console.log("calling function:", qwerty(8, 9));
-// console.log("outside function:", z);
-
-
-// STEGANOGRAPHY
-
-// function loadMainImage() {
-//   var imgFile = document.getElementById("fgFile");
-//   fgImage = new SimpleImage(imgFile);
-//   canvasFg = document.getElementById("fgCan");
-//   fgImage.drawTo(canvasFg);
-// }
-
-// function loadHiddenImage() {
-//   var imgFile = document.getElementById("bgFile");
-//   bgImage = new SimpleImage(imgFile);
-//   canvasBg = document.getElementById("bgCan");
-//   bgImage.drawTo(canvasBg);
-// }
-
-// function crop(image, width, height){
-//   var n = new SimpleImage(width,height);
-//   for(var p of image.values()){
-//      var x = p.getX();
-//      var y = p.getY();
-//      if (x < width && y < height){
-//   var np = n.getPixel(x,y);
-//   np.setRed(p.getRed());
-//   np.setBlue(p.getBlue());
-//   np.setGreen(p.getGreen()); 
-// }
-//   }
-//   return n;
-// }
-
-// function clearBits(colorval) {
-//     var x = Math.floor(colorval/16) * 16;
-//     return x;
-// }
-
-// function chopToHide(image) {
-//     for (var px of image.values()) {
-//         px.setRed(clearBits(px.getRed()));
-//         px.setGreen(clearBits(px.getGreen()));
-//         px.setBlue(clearBits(px.getBlue()));
-//     }
-//     return image;
-// }
-
-// function shift(image) {
-//     for (var px of image.values()) {
-//         px.setRed(px.getRed() / 16);
-//         px.setGreen(px.getGreen() / 16);
-//         px.setBlue(px.getBlue() / 16);
-//     }
-//     return image;
-// }
-
-// function combine(fgImage, bgImage) {
-//     var output = new SimpleImage(fgImage.getWidth(), fgImage.getHeight());
-//     for (var px of output.values()) {
-//         var x = px.getX();
-//         var y = px.getY();
-//         var showPixel = fgImage.getPixel(x, y);
-//         var hidePixel = bgImage.getPixel(x, y);
-//         px.setRed(showPixel.getRed() + hidePixel.getRed());
-//         px.setGreen(showPixel.getGreen() + hidePixel.getGreen());
-//         px.setBlue(showPixel.getBlue() + hidePixel.getBlue());
-//     }
-//         output.drawTo(canvasFg);
-// }
-
-// function doCombine() {
-//   combine();
-// }
-
-// function clearCanvas() {
-//   var contextFg = canvasFg.getContext("2d");
-//   contextFg.clearRect(0, 0, canvasFg.width, canvasFg.height);
-//   var contextBg = canvasBg.getContext("2d");
-//   contextBg.clearRect(0, 0, canvasBg.width, canvasBg.height);
-// }
-
-// var start = new SimpleImage("usain.jpg");
-// var hide = new SimpleImage("eastereggs.jpg");
-// var smallImage1 = crop(start, 300, 300);
-// var smallImage2 = crop(hide, 300, 300);
-// smallImage1 = chopToHide(smallImage1);
-// smallImage2 = shift(smallImage2);
-// var ans = combine(smallImage1, smallImage2);
-// print(smallImage1);
-// print(smallImage2);
-// print(ans);
-// var start = new SimpleImage("astrachan.jpg");
-// var hide = new SimpleImage("pixabayhands.jpg");
-// start = chopToHide(start);
-// hide = shift(hide);
-// var ans = combine(start, hide);
-// // print(start);
-// // print(hide);
-// print(ans);
 

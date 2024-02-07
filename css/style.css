@@ -23,7 +23,6 @@ p {
     color: white;
 }
 
-
 ul {
     list-style: none;
     margin-top: 0;
@@ -31,20 +30,9 @@ ul {
     padding-left: 0;
 }
 
-
 a {
   text-decoration: none;
   color: white;
-}
-
-a:hover,
-a:focus {
-  color: rgb(32, 4, 109);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#id-filter.current {
-  color: rgb(32, 4, 109);
 }
 
 .header {
@@ -55,7 +43,6 @@ a:focus {
   width: 100vw;
   height: 80px;
   background-color: rgba(97, 94, 94, 0.9);
-  /* color: white; */
   margin-bottom: 60px;
 }
 
@@ -84,7 +71,6 @@ a:focus {
 
 #id-chromakey {
   overflow: hidden;
-  /* margin-top: 40px; */
   margin-bottom: 50px;
   color: transparent;
 }
@@ -96,7 +82,6 @@ a:focus {
 
 #id-painting {
   overflow: hidden;
-  /* margin-top: 40px; */
   margin-bottom: 50px;
   color: transparent;
 }
@@ -108,7 +93,6 @@ a:focus {
 
 #id-todo {
   overflow: hidden;
-  /* margin-top: 40px; */
   margin-bottom: 30px;
   color: transparent;
 }
@@ -191,6 +175,13 @@ a:focus {
     border-radius: 4px;
     background-color: white;
     width: 500px;
+}
+
+.draw-box-painting {
+    margin-bottom: 10px;
+    border: 1px solid rgb(32, 2, 82);
+    border-radius: 4px;
+    background-color: white;
 }
 
 .options {

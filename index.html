@@ -49,7 +49,7 @@
         </p>
         <p>Choose Filter
             <input id="blur-button" class="button" type="button" value="Blur" onclick="makeBlur()">
-            <input id="grey-button" class="button" type="button" value="Greyscale" onclick="makeGrey()">
+            <input id="grey-button" class="button" type="button" value="Grayscale" onclick="makeGrey()">
             <input id="red-button" class="button" type="button" value="Red" onclick="makeRedFilter()">
             <input id="rainbow-button" class="button" type="button" value="Rainbow" onclick="makeRainbow()">
             <input id="reset-button" class="button" type="button" value="Reset Image" onclick="reset()">
@@ -116,7 +116,7 @@
         
         <ul class="canvas-list">
             <li id="draw-list">
-                <canvas id="canvas1" class="draw-box" onmousedown="startPaint()" onmouseup="endPaint()" onmousemove="doPaint(event.offsetX, event.offsetY)">
+                <canvas id="canvas1" class="draw-box-painting" onmousedown="startPaint()" onmouseup="endPaint()" onmousemove="doPaint(event.offsetX, event.offsetY)">
 
                 </canvas>
             </li>
