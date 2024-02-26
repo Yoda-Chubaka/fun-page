@@ -45,9 +45,28 @@
     <div class="box-3">
         <p>
             Load Image
-            <input id="load-button" type="file" multiple="false" accept="image/*" onchange="upload()">
+            <input id="load-button" class="load-button" type="file" multiple="false" accept="image/*" onchange="upload()">
         </p>
-        <p>Choose Filter
+        <p class="mobile-paragraph">Choose Filter</p>
+        <ul class="mobile-filter">
+            <li>
+                <input id="blur-button" class="button" type="button" value="Blur" onclick="makeBlur()">
+            </li>
+            <li>
+                <input id="grey-button" class="button" type="button" value="Grayscale" onclick="makeGrey()">
+            </li>
+            <li>
+                <input id="red-button" class="button" type="button" value="Red" onclick="makeRedFilter()">
+            </li>
+            <li>
+                <input id="rainbow-button" class="button" type="button" value="Rainbow" onclick="makeRainbow()">
+            </li>
+            <li>
+                <input id="reset-button" class="button" type="button" value="Reset Image" onclick="reset()">
+            </li>
+        </ul>
+           
+        <p class="desktop-filter">Choose Filter
             <input id="blur-button" class="button" type="button" value="Blur" onclick="makeBlur()">
             <input id="grey-button" class="button" type="button" value="Grayscale" onclick="makeGrey()">
             <input id="red-button" class="button" type="button" value="Red" onclick="makeRedFilter()">
@@ -80,20 +99,30 @@
             <li>
                 <p class="chrom-text">
                     Foreground Image:
-                    <input type="file" multiple="false" accept="image/*" id="fgFile" onchange="loadForegroundImage()">
+                    <input type="file" class="button-image" multiple="false" accept="image/*" id="fgFile" onchange="loadForegroundImage()">
                 </p>
             </li>
             <li>
                 <p class="chrom-text">
                     Background Image:
-                    <input type="file" multiple="false" accept="image/*" id="bgFile" onchange="loadBackgroundImage()">
+                    <input type="file" class="button-image" multiple="false" accept="image/*" id="bgFile" onchange="loadBackgroundImage()">
                 </p>
         </li>
         </ul>
        
         <div class="chrom-buttons-box">
-            <input type="button" id="button-make-gray" class="chromakey-button onclick-button chromakey-left-button" value="Combine photos" onclick="doGreenScreen()">
-            <input type="button" id="button-make-gray" class="chromakey-button onclick-button" value="Clean the canvas" onclick="clearCanvas()">
+            <ul class="chrom-list">
+                <li>
+                    <input type="button" id="button-make-gray" class="chromakey-button onclick-button chromakey-left-button"
+                        value="Combine photos" onclick="doGreenScreen()">
+                </li>
+                <li>
+                    <input type="button" id="button-make-gray" class="chromakey-button onclick-button" value="Clean the canvas"
+                        onclick="clearCanvas()">
+                </li>
+            </ul>
+           
+            
         </div>
     </div>
 
