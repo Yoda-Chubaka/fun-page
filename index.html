@@ -18,16 +18,16 @@
 <body>
     <header class="header">
         <ul class="header-list">
-            <li>
+            <li class="header-item">
                 <a href="#id-filter">Filter Fun</a>
             </li>
-            <li>
+            <li class="header-item">
                 <a href="#id-chromakey">Webpage with chromakey</a>
             </li>
-            <li>
+            <li class="header-item">
                 <a href="#id-painting">You can draw everything here!</a>
             </li>
-            <li>
+            <li class="header-item">
                 <a href="#id-todo">TODO List</a>
             </li>
         </ul>
@@ -132,12 +132,12 @@
     <div class="square-container">
         <h1>You can draw everything here!</h1>
         <div class="box-draw-options">
-            <p class="paragraph-draw-options">
+            <p class="paragraph-draw-options width-options">
                 Set Width
                 <input class="input-set" type="text" onchange="setWidth(this.value)">
             </p>
             
-            <p>
+            <p class="paragraph-draw-options width-options">
                 Set Height
                 <input class="input-set" type="text" onchange="setHeight(this.value)">
             </p>
@@ -203,8 +203,16 @@
   <div id="divabout" class="aboutcolor">
     <p id="textabout"></p>
   </div>
-  <input type="button" class="todo-button-input" id="aboutButton" onclick="doAbout()" value="About" />
-  <input type="button" class="todo-button-input" id="clearButton" onclick="clearAbout()" value="Clear" />
+  <ul class="todo-button-list">
+    <li>
+        <input type="button" class="todo-button-input" id="aboutButton" onclick="doAbout()" value="About" />
+    </li>
+    <li>
+        <input type="button" class="todo-button-input" id="clearButton" onclick="clearAbout()" value="Clear" />
+    </li>
+  </ul>
+ 
+  
     </div>
 
     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
