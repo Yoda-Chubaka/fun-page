@@ -154,10 +154,10 @@
     min-width: 89px;
     outline: 0;
     border: 1px solid rgba(72, 42, 97);
-    padding: 2px;
+    padding: 4px;
     margin-right: 2px;
     border-radius: 3px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .desktop-filter {
@@ -197,8 +197,8 @@
     margin-right: auto;
     padding-bottom: 40px;
     padding-top: 15px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
     margin-bottom: 40px;
     border-radius: 8px;
   }
@@ -210,7 +210,7 @@
   }
 
   .draw-box {
-    width: 230px;
+    width: 220px;
     margin-bottom: 10px;
     border: 1px solid rgb(32, 2, 82);
     border-radius: 4px;
@@ -219,7 +219,7 @@
   }
 
   .draw-box-painting {
-    width: 250px;
+    width: 230px;
     margin-bottom: 10px;
     border: 1px solid rgb(32, 2, 82);
     border-radius: 4px;
@@ -299,7 +299,8 @@
     margin-left: auto;
     margin-right: auto;
     padding-top: 15px;
-    padding-left: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 15px;
     background-color: rgba(179, 110, 245, 0.9);
     border-radius: 8px;
@@ -356,14 +357,15 @@
     font-size: 16px;
   }
 
-  .width-options {
-    margin-right: 20px;
-  }
+  /* .width-options {
+    margin-right: 10px;
+  } */
 
   .input-set {
     border-radius: 4px;
     border: 1px solid grey;
     height: 25px;
+    width: 100%;
     padding: 5px;
   }
 
@@ -394,8 +396,8 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-top: 15px;
     padding-bottom: 30px;
     background-color: rgba(153, 153, 238, 0.9);
@@ -463,9 +465,18 @@
     width: 100%;
   }
 
+  li.important {
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 0px;
+    outline: none;
+  }
+
   .todo-text-input {
     font-size: 14px;
-    width: 160px;
+    width: 140px;
     padding: 5px;
     border: 0;
     border-radius: 2px;
@@ -556,6 +567,598 @@
     outline: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 480px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: rgb(218, 226, 252);
+    background-image: url('../src/bg-image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+
+  p {
+    color: white;
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  h1,
+  h2 {
+    text-align: center;
+    color: white;
+    font-family: 'Single Day', cursive, "Roboto", sans-serif;
+    font-size: 22px;
+  }
+
+  /* HEADER */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100vw;
+    height: 120px;
+    background-color: rgba(97, 94, 94, 0.9);
+    margin-bottom: 20px;
+  }
+
+  .header-list {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    font-family: 'Single Day', cursive, "Arial", sans-serif;
+  }
+
+  .header-item {
+    margin-bottom: 7px;
+  }
+
+  /* LENDING ANCHORS */
+  #id-filter {
+    overflow: hidden;
+    margin-top: 50px;
+    margin-bottom: 90px;
+    color: transparent;
+  }
+
+  #id-filter:hover,
+  #id-filter:focus {
+    cursor: default;
+  }
+
+  #id-chromakey {
+    overflow: hidden;
+    margin-bottom: 90px;
+    color: transparent;
+  }
+
+  #id-chromakey:hover,
+  #id-chromakey:focus {
+    cursor: default;
+  }
+
+  #id-painting {
+    overflow: hidden;
+    margin-bottom: 90px;
+    color: transparent;
+  }
+
+  #id-painting:hover,
+  #id-painting:focus {
+    cursor: default;
+  }
+
+  #id-todo {
+    overflow: hidden;
+    margin-bottom: 15px;
+    color: transparent;
+  }
+
+  #id-todo:hover,
+  #id-todo:focus {
+    cursor: default;
+  }
+
+  /* FILTER FUN */
+  #main-canvas {
+    width: 300px;
+    border: 1px solid rgb(253, 251, 251);
+  }
+
+  .box-1 {
+    width: 380px;
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: rgba(23, 11, 129, 0.9);
+  }
+
+  .box-2 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .box-3 {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .mobile-paragraph {
+    margin-bottom: 5px;
+  }
+
+  .mobile-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    color: white;
+  }
+
+  .mobile-filter li {
+    flex-basis: calc((100% - 3 * 30px) / 3);
+    margin-bottom: 0;
+    width: 320px;
+  }
+
+  .mobile-filter input {
+    min-width: 93px;
+    outline: 0;
+    border: 1px solid rgba(72, 42, 97);
+    padding: 4px;
+    margin-right: 2px;
+    border-radius: 3px;
+    font-size: 15px;
+  }
+
+  .desktop-filter {
+    display: none;
+  }
+
+  .load-button {
+    font-size: 15px;
+  }
+
+  /* .button {
+    
+  } */
+
+  /* .button:hover,
+  .button:focus {
+    cursor: pointer;
+    background-color: rgb(72, 42, 97);
+    color: white;
+    outline: 0;
+    border: 1px solid rgba(255, 255, 255);
+  } */
+
+  .make-blur {
+    filter: blur(4px);
+  }
+
+  .no-filter {
+    filter: none;
+  }
+
+  /* CHROMAKEY */
+  .div-color-chromakey {
+    background-color: rgba(190, 86, 164, 0.9);
+    width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+  }
+
+  .canvas-list {
+    display: inline;
+  }
+
+  .draw-box {
+    width: 320px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(32, 2, 82);
+    border-radius: 4px;
+    background-color: white;
+
+  }
+
+  .draw-box-painting {
+    width: 320px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(32, 2, 82);
+    border-radius: 4px;
+    background-color: white;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+  }
+
+  .button-add-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .grey-button {
+    margin-right: 50px;
+  }
+
+  .chromakey-box {
+    width: 270px;
+    border-radius: 6px;
+    background-color: rgba(189, 189, 247, 0.5);
+    /* padding-left: 20px; */
+    padding-top: 5px;
+    padding-bottom: 25px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .button-image {
+    font-size: 14px;
+  }
+
+  .chrom-text {
+    margin-left: 10px;
+  }
+
+  .chrom-list {
+    text-align: center;
+  }
+
+  .chromakey-button {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .chromakey-left-button {
+    margin-bottom: 5px;
+  }
+
+  .onclick-button {
+    border: 0;
+    border-radius: 4px;
+    padding: 5px;
+    border: 1px solid grey;
+    font-size: 16px;
+  }
+
+  .onclick-button:hover,
+  .onclick-button:focus {
+    cursor: pointer;
+    background-color: rgb(72, 42, 97);
+    color: white;
+    outline: 0;
+    border: 1px solid rgba(255, 255, 255);
+  }
+
+  /* PAINTING CANVAS */
+
+  .square-container {
+    width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+    background-color: rgba(179, 110, 245, 0.9);
+    border-radius: 8px;
+  }
+
+  /* .square-box {
+    margin-bottom: 10px;
+    width: 180px;
+    height: 140px;
+    border: 1px solid rgb(32, 2, 82);
+    padding-left: 4px;
+    padding-right: 12px;
+    background-color: rgb(14, 114, 160);
+    border-radius: 14px;
+  } */
+
+  .square-button {
+    width: 70px;
+    height: 35px;
+    padding: 3px;
+    margin-right: 20px;
+  }
+
+  .square-button:hover,
+  .square-button:focus {
+    cursor: pointer;
+  }
+
+  .button-square-box {
+    padding-bottom: 30px;
+  }
+
+  .range-button:hover,
+  .range-button:focus {
+    cursor: pointer;
+  }
+
+  .draw-box {
+    margin-bottom: 10px;
+    border: 1px solid rgb(32, 2, 82);
+    background-color: white;
+  }
+
+  .box-draw-options {
+    display: inline;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+
+  .paragraph-draw-options {
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 16px;
+  }
+
+  /* .width-options {
+    margin-right: 20px;
+  } */
+
+  .input-set {
+    border-radius: 4px;
+    border: 1px solid grey;
+    width: 100%;
+    height: 25px;
+    padding: 5px;
+  }
+
+  .input-set:hover,
+  .input-set:focus {
+    outline: 0;
+    border-style: none;
+    border: 1px solid grey;
+  }
+
+  .options-button {
+    width: 50px;
+    height: 30px;
+    padding: 3px;
+  }
+
+  .options-button:hover,
+  .options-button:focus {
+    cursor: pointer;
+  }
+
+
+  /* TODO LIST */
+  .container {
+    border-radius: 8px;
+    width: 380px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    background-color: rgba(153, 153, 238, 0.9);
+
+  }
+
+  .make-list {
+    list-style-type: none;
+    background-color: #eee;
+    border: 1px solid #c3c3c3;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    width: 100%;
+  }
+
+  .done {
+    background-color: green;
+    border: 1px solid rgb(1, 44, 1);
+    border-radius: 4px;
+  }
+
+  .done:hover,
+  .done:focus {
+    background-color: rgb(2, 59, 2);
+    color: white;
+    cursor: pointer;
+  }
+
+  .remove {
+    background-color: red;
+    border: 1px solid rgb(54, 1, 1);
+    border-radius: 4px;
+  }
+
+  .remove:hover,
+  .remove:focus {
+    background-color: rgb(77, 2, 2);
+    color: white;
+    cursor: pointer;
+  }
+
+  .important {
+    background-color: lightblue;
+    border: 1px solid rgb(3, 34, 44);
+    border-radius: 4px;
+  }
+
+  .important:hover,
+  .important:focus {
+    background-color: rgb(4, 58, 77);
+    color: white;
+    cursor: pointer;
+  }
+
+  li.finished {
+    color: white;
+    background-color: gray;
+    text-decoration: line-through;
+    list-style-type: none;
+    border: 1px solid #c3c3c3;
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  li.important {
+    padding: 5px 0px 5px 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 0px;
+    outline: none;
+  }
+
+  .todo-text-input {
+    font-size: 16px;
+    width: 230px;
+    padding: 5px;
+    border: 0;
+    border-radius: 2px;
+  }
+
+  #input:hover,
+  #input:focus {
+    outline: 0;
+    border-style: none;
+    border-radius: 2px;
+  }
+
+  .todo-button-input {
+    font-size: 16px;
+    margin: -6px 4px 0px 0px;
+  }
+
+  #addButton {
+    padding: 5px;
+    min-width: 80px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  #addButton:hover,
+  #addButton:focus {
+    background-color: rgb(72, 42, 97);
+    color: white;
+    cursor: pointer;
+    outline: 0;
+    border-style: none;
+    border: 1px solid rgba(255, 255, 255);
+  }
+
+  .aboutcolor {
+    background-color: rgb(72, 42, 97);
+  }
+
+  #divabout {
+    width: 230px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .todo-button-list {
+    display: flex;
+    justify-content: center;
+  }
+
+  #textabout {
+    font-size: 14px;
+    padding-left: 10px;
+    color: white;
+  }
+
+  #aboutButton {
+    padding: 5px;
+    min-width: 100px;
+    border: 1px solid grey;
+    border-radius: 4px;
+  }
+
+  #aboutButton:hover,
+  #aboutButton:focus {
+    background-color: rgb(72, 42, 97);
+    border: 1px solid rgba(255, 255, 255);
+    color: white;
+    cursor: pointer;
+    outline: 0;
+  }
+
+  #clearButton {
+    padding: 5px;
+    min-width: 100px;
+    border-style: none;
+    border-radius: 4px;
+    border: 1px solid grey;
+  }
+
+  #clearButton:hover,
+  #clearButton:focus {
+    background-color: rgb(72, 42, 97);
+    border: 1px solid rgba(255, 255, 255);
+    color: white;
+    cursor: pointer;
+    outline: 0;
+  }
+}
+
+
+
+
+
+
+
 
 
 
@@ -754,7 +1357,7 @@
     width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
     padding-top: 15px;
     margin-bottom: 40px;
     border-radius: 8px;
@@ -1006,6 +1609,16 @@
     margin-bottom: 10px;
     font-size: 16px;
     width: 100%;
+  }
+
+
+  li.important {
+    padding: 10px 0px 10px 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 0px;
+    outline: none;
   }
 
   .todo-text-input {
