@@ -1304,6 +1304,7 @@
   }
 
   .load-button {
+    margin-left: 10px;
     font-size: 15px;
   }
 
@@ -1344,7 +1345,6 @@
     padding-right: 33px;
   }
 
-
   .make-blur {
     filter: blur(4px);
   }
@@ -1355,7 +1355,7 @@
 
   .div-color-chromakey {
     background-color: rgba(190, 86, 164, 0.9);
-    width: 1200px;
+    width: 700px;
     margin-left: auto;
     margin-right: auto;
     padding-bottom: 50px;
@@ -1374,7 +1374,7 @@
     border: 1px solid rgb(32, 2, 82);
     border-radius: 4px;
     background-color: white;
-    width: 500px;
+    width: 300px;
   }
 
   .draw-box-painting {
@@ -1454,7 +1454,7 @@
   }
 
   .square-container {
-    width: 800px;
+    width: 600px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 15px;
@@ -1504,12 +1504,17 @@
   .box-draw-options {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: last baseline;
+    width: 500px;
   }
 
   .paragraph-draw-options {
-    margin-right: 15px;
+    /* margin-right: 40px; */
     margin-left: 15px;
+  }
+
+  .right-paragraph {
+    margin-right: 40px;
   }
 
   .input-set {
@@ -1528,8 +1533,9 @@
 
   .options-button {
     width: 70px;
-    height: 35px;
+    height: 30px;
     padding: 3px;
+    margin-left: 15px;
   }
 
   .options-button:hover,
@@ -1539,7 +1545,7 @@
 
   .container {
     border-radius: 8px;
-    width: 800px;
+    width: 600px;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
@@ -1625,7 +1631,7 @@
 
   .todo-text-input {
     font-size: 16px;
-    width: 650px;
+    width: 450px;
     padding: 5px;
     border: 0;
     border-radius: 2px;
@@ -2070,7 +2076,8 @@
   .box-draw-options {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
+    width: 700px;
   }
 
   .paragraph-draw-options {
