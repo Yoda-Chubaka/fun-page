@@ -18,16 +18,16 @@
 <body>
     <header class="header">
         <ul class="header-list">
-            <li>
+            <li class="header-item">
                 <a href="#id-filter">Filter Fun</a>
             </li>
-            <li>
+            <li class="header-item">
                 <a href="#id-chromakey">Webpage with chromakey</a>
             </li>
-            <li>
+            <li class="header-item">
                 <a href="#id-painting">You can draw everything here!</a>
             </li>
-            <li>
+            <li class="header-item">
                 <a href="#id-todo">TODO List</a>
             </li>
         </ul>
@@ -45,10 +45,29 @@
     <div class="box-3">
         <p>
             Load Image
-            <input id="load-button" type="file" multiple="false" accept="image/*" onchange="upload()">
+            <input id="load-button" class="load-button" type="file" multiple="false" accept="image/*" onchange="upload()">
         </p>
-        <p>Choose Filter
-            <input id="blur-button" class="button" type="button" value="Blur" onclick="makeBlur()">
+        <p class="mobile-paragraph">Choose Filter</p>
+        <ul class="mobile-filter">
+            <li>
+                <input id="blur-button" class="button" type="button" value="Blur" onclick="makeBlur()">
+            </li>
+            <li>
+                <input id="grey-button" class="button" type="button" value="Grayscale" onclick="makeGrey()">
+            </li>
+            <li>
+                <input id="red-button" class="button" type="button" value="Red" onclick="makeRedFilter()">
+            </li>
+            <li>
+                <input id="rainbow-button" class="button" type="button" value="Rainbow" onclick="makeRainbow()">
+            </li>
+            <li>
+                <input id="reset-button" class="button" type="button" value="Reset Image" onclick="reset()">
+            </li>
+        </ul>
+           
+        <p class="desktop-filter">Choose Filter
+            <input id="blur-button" class="button blur-button" type="button" value="Blur" onclick="makeBlur()">
             <input id="grey-button" class="button" type="button" value="Grayscale" onclick="makeGrey()">
             <input id="red-button" class="button" type="button" value="Red" onclick="makeRedFilter()">
             <input id="rainbow-button" class="button" type="button" value="Rainbow" onclick="makeRainbow()">
@@ -80,20 +99,30 @@
             <li>
                 <p class="chrom-text">
                     Foreground Image:
-                    <input type="file" multiple="false" accept="image/*" id="fgFile" onchange="loadForegroundImage()">
+                    <input type="file" class="button-image" multiple="false" accept="image/*" id="fgFile" onchange="loadForegroundImage()">
                 </p>
             </li>
             <li>
                 <p class="chrom-text">
                     Background Image:
-                    <input type="file" multiple="false" accept="image/*" id="bgFile" onchange="loadBackgroundImage()">
+                    <input type="file" class="button-image" multiple="false" accept="image/*" id="bgFile" onchange="loadBackgroundImage()">
                 </p>
         </li>
         </ul>
        
         <div class="chrom-buttons-box">
-            <input type="button" id="button-make-gray" class="chromakey-button onclick-button chromakey-left-button" value="Combine photos" onclick="doGreenScreen()">
-            <input type="button" id="button-make-gray" class="chromakey-button onclick-button" value="Clean the canvas" onclick="clearCanvas()">
+            <ul class="chrom-list">
+                <li>
+                    <input type="button" id="button-make-gray" class="chromakey-button onclick-button chromakey-left-button"
+                        value="Combine photos" onclick="doGreenScreen()">
+                </li>
+                <li>
+                    <input type="button" id="button-make-gray" class="chromakey-button onclick-button" value="Clean the canvas"
+                        onclick="clearCanvas()">
+                </li>
+            </ul>
+           
+            
         </div>
     </div>
 
@@ -103,12 +132,12 @@
     <div class="square-container">
         <h1>You can draw everything here!</h1>
         <div class="box-draw-options">
-            <p class="paragraph-draw-options">
+            <p class="paragraph-draw-options width-options">
                 Set Width
                 <input class="input-set" type="text" onchange="setWidth(this.value)">
             </p>
             
-            <p>
+            <p class="paragraph-draw-options width-options">
                 Set Height
                 <input class="input-set" type="text" onchange="setHeight(this.value)">
             </p>
@@ -127,7 +156,7 @@
                 <input class="options-button" type="color" value="#000000" onchange="changeColor(this.value)">
             </p>
             
-            <p class="paragraph-draw-options">
+            <p class="paragraph-draw-options right-paragraph">
                 Brush size
                 <input class="range-button" type="range" id="sizeInput" min="1" max="50" value="50" oninput="resizeBrush(this.value)">
                 <output id="sizeOutput">50</output>
@@ -174,8 +203,16 @@
   <div id="divabout" class="aboutcolor">
     <p id="textabout"></p>
   </div>
-  <input type="button" class="todo-button-input" id="aboutButton" onclick="doAbout()" value="About" />
-  <input type="button" class="todo-button-input" id="clearButton" onclick="clearAbout()" value="Clear" />
+  <ul class="todo-button-list">
+    <li>
+        <input type="button" class="todo-button-input" id="aboutButton" onclick="doAbout()" value="About" />
+    </li>
+    <li>
+        <input type="button" class="todo-button-input" id="clearButton" onclick="clearAbout()" value="Clear" />
+    </li>
+  </ul>
+ 
+  
     </div>
 
     <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
